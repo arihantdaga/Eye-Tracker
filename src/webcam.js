@@ -32,8 +32,9 @@ export class WebCam{
     async capture(){
         return tf.tidy(()=>{
             const eyesImage  = tf.fromPixels(this.eyeElem);
-            console.log(eyesImage);
+            // console.log(eyesImage);
             const batchedImages = eyesImage.expandDims(0);
+            // eyesImage.dataSync();
 
             // Normalize Image from -1 to 1
             return batchedImages.toFloat().div(tf.scalar(127)).sub(tf.scalar(1));
